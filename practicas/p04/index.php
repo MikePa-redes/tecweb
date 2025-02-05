@@ -64,6 +64,46 @@ echo "GLOBALS['b']: " . $GLOBALS['b'] . "<br>";
 echo "GLOBALS['c']: " . $GLOBALS['c'] . "<br>";
 echo "GLOBALS['z']: ";
 print_r($GLOBALS['z']);
+unset($c);
+unset($z);
+unset($b);
+unset($c);
+
+echo "<br><br> 5):<br>";
+
+$a = "7 personas";
+$b = (integer) $a;
+$a = "9E3";
+$c = (double) $a;
+
+echo "\$a: " . $a . "<br>"; 
+echo "\$b: " . $b . "<br>"; 
+echo "\$c: " . $c . "<br>";
+unset($a);
+unset($b);
+unset($c);
+
+echo "<br><br> 6):<br>";
+$a = "0";
+$b = "TRUE";
+$c = "FALSE";
+$d = ($a OR $b);
+$e = ($a AND $c);
+$f = ($a XOR $b);
+
+var_dump($a); echo "<br>";  
+var_dump($b); echo "<br>";  
+var_dump($c); echo "<br>";  
+var_dump($d); echo "<br>";  
+var_dump($e); echo "<br>";  
+var_dump($f); echo "<br>";  
+
+$e = "FALSE";
+var_export($e, true);
+var_export($c, true);
+echo "Valor de e: $e <br>";
+echo "Valor de c: $c <br>";
+
 ?>
 
 </body>
