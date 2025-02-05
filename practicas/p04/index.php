@@ -104,6 +104,15 @@ var_export($c, true);
 echo "Valor de e: $e <br>";
 echo "Valor de c: $c <br>";
 
+echo "<br><br> 7):<br>";
+echo "Versión de Apache: " . $_SERVER['SERVER_SOFTWARE'] . "<br>";
+echo "Versión de PHP: " . phpversion() . "<br>";
+echo "Sistema Operativo del Servidor: " . PHP_OS . "<br>";
+echo "Idioma del navegador: " . $_SERVER['HTTP_ACCEPT_LANGUAGE'] . "<br>";
+
+
+
+
 ?>
 
 </body>
