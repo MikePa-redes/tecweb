@@ -31,5 +31,25 @@ function numeros_aleatorios() {
     return "$total_numeros_generados números obtenidos en $contador iteraciones";
 }
 
+function numero_aleatorio_multiplo($num){
+    $encontrado = false; 
+    while(!$encontrado){
+        $numero = rand(1,100);
+        if($numero % $num == 0){
+            $encontrado = true; 
+        }
+    }
+    echo '<h3>El primer número aleatorio generado que es múltimplo de ' . $num . ' es: </h3>' .$numero; 
+
+}
+
+function numero_aleatorio_multiplo_variable($num) {
+    do {
+        $numero = rand(1, 100);
+    } while ($numero % $num != 0);  // Continúa hasta que encuentre un múltiplo de $num
+
+    echo '<h3>El primer número aleatorio generado que es múltiplo de ' . $num . ' es: </h3>' . $numero;
+}
+
 
 ?>

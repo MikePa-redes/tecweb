@@ -24,7 +24,16 @@ secuencia compuesta por: impar, par, impar</p>
     echo numeros_aleatorios();
 
 ?>
+<h2>Ejercicio 3: </h2>
+<p>Utiliza un ciclo while para encontrar el primer número entero obtenido aleatoriamente,
+pero que además sea múltiplo de un número dado.</p>
+<?php  
+    require_once __DIR__ . '/src/funciones.php';
 
+    if(isset($_GET['multiplo'])){
+        numero_aleatorio_multiplo($_GET['multiplo']);
+    }
+?>
 </body>
 </html>
 
