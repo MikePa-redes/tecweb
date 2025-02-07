@@ -11,8 +11,25 @@ function multiplo_5y7($num){
 
 }
 
-function impar_par_impar(){
-    
+function numeros_aleatorios() {
+    $encontrado = false; 
+    $contador = 0; 
+
+    do {
+        $numero1 = rand(1, 100);
+        $numero2 = rand(1, 100);
+        $numero3 = rand(1, 100);
+        $contador++;
+
+        if ($numero1 % 2 != 0 && $numero2 % 2 == 0 && $numero3 % 2 != 0) {
+            $encontrado = true;
+        }
+    } while (!$encontrado); 
+
+    $total_numeros_generados = $contador * 3; 
+
+    return "$total_numeros_generados números obtenidos en $contador iteraciones";
 }
+
 
 ?>
