@@ -75,6 +75,230 @@ bienvenida apropiado.</p>
    }
 ?>
 
+<h2>Ejercicio 6: </h2>
+<p>Crea en código duro un arreglo asociativo que sirva para registrar el parque vehicular de
+una ciudad.</p>
+
+<?php
+$array = [
+    "ABC1234" => [
+        "Auto" => [
+            "marca" => "Toyota",
+            "modelo" => 2022,
+            "tipo" => "sedan"
+        ],
+        "Propietario" => [
+            "nombre" => "Juan Pérez",
+            "ciudad" => "Ciudad de México",
+            "direccion" => "Av. Reforma 123"
+        ]
+    ],
+    "XYZ5678" => [
+        "Auto" => [
+            "marca" => "Honda",
+            "modelo" => 2021,
+            "tipo" => "hatchback"
+        ],
+        "Propietario" => [
+            "nombre" => "María López",
+            "ciudad" => "Guadalajara",
+            "direccion" => "Calle Juárez 456"
+        ]
+    ],
+    "LMN9876" => [
+        "Auto" => [
+            "marca" => "Ford",
+            "modelo" => 2020,
+            "tipo" => "camioneta"
+        ],
+        "Propietario" => [
+            "nombre" => "Carlos Ramírez",
+            "ciudad" => "Monterrey",
+            "direccion" => "Blvd. Constitución 789"
+        ]
+    ],
+    "DEF2468" => [
+        "Auto" => [
+            "marca" => "Mazda",
+            "modelo" => 2019,
+            "tipo" => "sedan"
+        ],
+        "Propietario" => [
+            "nombre" => "Laura Gómez",
+            "ciudad" => "Puebla",
+            "direccion" => "Calle 5 de Mayo 321"
+        ]
+    ],
+    "GHI1357" => [
+        "Auto" => [
+            "marca" => "Chevrolet",
+            "modelo" => 2018,
+            "tipo" => "hatchback"
+        ],
+        "Propietario" => [
+            "nombre" => "Roberto Sánchez",
+            "ciudad" => "Tijuana",
+            "direccion" => "Av. Revolución 654"
+        ]
+    ],
+    "JKL8642" => [
+        "Auto" => [
+            "marca" => "Nissan",
+            "modelo" => 2022,
+            "tipo" => "camioneta"
+        ],
+        "Propietario" => [
+            "nombre" => "Fernanda Torres",
+            "ciudad" => "León",
+            "direccion" => "Calle Insurgentes 789"
+        ]
+    ],
+    "MNO7531" => [
+        "Auto" => [
+            "marca" => "Volkswagen",
+            "modelo" => 2021,
+            "tipo" => "sedan"
+        ],
+        "Propietario" => [
+            "nombre" => "Jorge Herrera",
+            "ciudad" => "Mérida",
+            "direccion" => "Av. Montejo 234"
+        ]
+    ],
+    "PQR1593" => [
+        "Auto" => [
+            "marca" => "BMW",
+            "modelo" => 2020,
+            "tipo" => "hatchback"
+        ],
+        "Propietario" => [
+            "nombre" => "Sofía Medina",
+            "ciudad" => "Querétaro",
+            "direccion" => "Blvd. Bernardo Quintana 987"
+        ]
+    ],
+    "STU4826" => [
+        "Auto" => [
+            "marca" => "Audi",
+            "modelo" => 2019,
+            "tipo" => "camioneta"
+        ],
+        "Propietario" => [
+            "nombre" => "Daniel Vargas",
+            "ciudad" => "Toluca",
+            "direccion" => "Calle Morelos 876"
+        ]
+    ],
+    "VWX2048" => [
+        "Auto" => [
+            "marca" => "Kia",
+            "modelo" => 2018,
+            "tipo" => "sedan"
+        ],
+        "Propietario" => [
+            "nombre" => "Elena Rodríguez",
+            "ciudad" => "Chihuahua",
+            "direccion" => "Av. Universidad 543"
+        ]
+    ],
+    "YZA3875" => [
+        "Auto" => [
+            "marca" => "Hyundai",
+            "modelo" => 2022,
+            "tipo" => "hatchback"
+        ],
+        "Propietario" => [
+            "nombre" => "Ricardo Montes",
+            "ciudad" => "San Luis Potosí",
+            "direccion" => "Calle Hidalgo 432"
+        ]
+    ],
+    "BCD6294" => [
+        "Auto" => [
+            "marca" => "Peugeot",
+            "modelo" => 2021,
+            "tipo" => "camioneta"
+        ],
+        "Propietario" => [
+            "nombre" => "Gabriela Suárez",
+            "ciudad" => "Cancún",
+            "direccion" => "Av. Bonampak 210"
+        ]
+    ],
+    "EFG7382" => [
+        "Auto" => [
+            "marca" => "Mercedes-Benz",
+            "modelo" => 2020,
+            "tipo" => "sedan"
+        ],
+        "Propietario" => [
+            "nombre" => "Alejandro Castro",
+            "ciudad" => "Culiacán",
+            "direccion" => "Calle Obregón 765"
+        ]
+    ],
+    "HIJ8392" => [
+        "Auto" => [
+            "marca" => "Tesla",
+            "modelo" => 2019,
+            "tipo" => "hatchback"
+        ],
+        "Propietario" => [
+            "nombre" => "Paula Fernández",
+            "ciudad" => "Aguascalientes",
+            "direccion" => "Blvd. Colosio 987"
+        ]
+    ],
+    "KLM9405" => [
+        "Auto" => [
+            "marca" => "Subaru",
+            "modelo" => 2018,
+            "tipo" => "camioneta"
+        ],
+        "Propietario" => [
+            "nombre" => "Hugo Ortega",
+            "ciudad" => "Veracruz",
+            "direccion" => "Calle Independencia 123"
+        ]
+    ]
+];
+
+print_r($array);
+?>
+
+<br><br>
+<form action="http://localhost/tecweb/practicas/p06/index.php" method="post">
+        Matricula: <input type="text" name="matricula"><br>
+        <input type="submit">
+    </form>
+    <br>
+
+    <?php
+if(isset($_POST["matricula"]))
+{
+    $matricula = strtoupper(trim($_POST["matricula"]));
+
+    if(!empty($matricula) && array_key_exists($matricula, $array))
+    {
+        echo "<h3>Información del vehículo con matrícula: $matricula</h3>";
+        echo "Marca: " . $array[$matricula]["Auto"]["marca"] . "<br>";
+        echo "Modelo: " . $array[$matricula]["Auto"]["modelo"] . "<br>";
+        echo "Tipo: " . $array[$matricula]["Auto"]["tipo"] . "<br><br>";
+
+        echo "<h4>Propietario</h4>";
+        echo "Nombre: " . $array[$matricula]["Propietario"]["nombre"] . "<br>";
+        echo "Ciudad: " . $array[$matricula]["Propietario"]["ciudad"] . "<br>";
+        echo "Dirección: " . $array[$matricula]["Propietario"]["direccion"] . "<br>";
+    }
+    else
+    {
+        echo "<h3>Matrícula no encontrada en el registro.</h3>";
+    }
+}
+?>
+
+
+
 </body>
 </html>
 
