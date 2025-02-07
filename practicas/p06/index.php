@@ -34,6 +34,24 @@ pero que además sea múltiplo de un número dado.</p>
         numero_aleatorio_multiplo($_GET['multiplo']);
     }
 ?>
+<h2>Ejercicio 4: </h2>
+<p>Crear un arreglo cuyos índices van de 97 a 122 y cuyos valores son las letras de la ‘a’
+a la ‘z’.</p>
+<?php  
+    $arreglo = [];
+    for ($i = 97; $i <= 122; $i++) {
+        $arreglo[$i] = chr($i);
+    }
+
+    echo "<table border='1'>";
+    echo "<tr><th>Índice ASCII</th><th>Letra</th></tr>";
+
+    foreach ($arreglo as $key => $value) {
+        echo "<tr><td>$key</td><td>$value</td></tr>";
+    }
+
+    echo "</table>";
+?>
 </body>
 </html>
 
