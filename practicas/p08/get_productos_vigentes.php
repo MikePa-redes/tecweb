@@ -24,7 +24,7 @@
             die('<p>Error de conexión: ' . htmlspecialchars($link->connect_error) . '</p>');
         }
 
-        $stmt = $link->prepare("SELECT * FROM productos WHERE unidades <= ?");
+        $stmt = $link->prepare("SELECT * FROM productos WHERE eliminado = 0 AND unidades <= ?");
         $stmt->bind_param("i", $tope);
         $stmt->execute();
         $result = $stmt->get_result();
