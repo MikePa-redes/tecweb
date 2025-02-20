@@ -1,28 +1,29 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
 "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es">
-	<head>
+<head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-		<title>Productos</title>
-		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-	</head>
-	<body>
-    <h3>Lista de Productos con Unidades ≤ <?= htmlspecialchars($_GET['tope'] ?? '') ?></h3>
-    <br/>
-
+    <title>Productos</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+</head>
+<body>
+    <p>
+        <a href="https://validator.w3.org/markup/check?uri=referer">
+            <img src="https://www.w3.org/Icons/valid-xhtml11" alt="Valid XHTML 1.1" height="31" width="88" />
+        </a>
+    </p>
+    <h3>Lista de Productos con Unidades &le; <?php echo htmlspecialchars($_GET['tope'] ?? ''); ?></h3>
+    
     <?php
     if (isset($_GET['tope']) && is_numeric($_GET['tope'])) {
         $tope = intval($_GET['tope']);
 
-        /** Crear conexión segura */
-        @$link = new mysqli('localhost', 'root', 'elcaballerodelanoche27', 'marketzone');
+        $link = new mysqli('localhost', 'root', 'elcaballerodelanoche27', 'marketzone');
 
-        /** Verificar conexión */
         if ($link->connect_errno) {
             die('<p>Error de conexión: ' . htmlspecialchars($link->connect_error) . '</p>');
         }
 
-        /** Consulta con sentencia preparada */
         $stmt = $link->prepare("SELECT * FROM productos WHERE unidades <= ?");
         $stmt->bind_param("i", $tope);
         $stmt->execute();
@@ -53,7 +54,7 @@
                         <td>' . htmlspecialchars($row['precio']) . '</td>
                         <td>' . htmlspecialchars($row['unidades']) . '</td>
                         <td>' . htmlspecialchars($row['detalles']) . '</td>
-                        <td><img src="' . htmlspecialchars($row['imagen']) . '" width="100" /></td>
+                        <td><img src="' . htmlspecialchars($row['imagen']) . '" width="100" alt="Imagen del producto" /></td>
                       </tr>';
             }
 
@@ -62,12 +63,11 @@
             echo '<p>No hay productos con unidades menores o iguales a ' . htmlspecialchars($tope) . '.</p>';
         }
 
-        /** Liberar memoria y cerrar conexión */
         $stmt->close();
         $link->close();
     } else {
         echo '<p>Error: Parámetro "tope" no válido o no proporcionado.</p>';
     }
     ?>
-	</body>
+</body>
 </html>
