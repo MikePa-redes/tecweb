@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8" >
+    <title>Registro de productos</title>
+    <style type="text/css">
+      ol, ul { 
+      list-style-type: none;
+      }
+    </style>
+</head>
+<h1>Registro de los productos</h1>
+<form id="formularioProducto" action="http://localhost/tecweb/practicas/p08/set_producto_v2.php" method="post">
+    <h2>Información del producto</h2>
+    <ul>
+        <li><label for="form-nombre">Nombre:</label> <input type="text" name="nombre" id="form-nombre"></li>
+        <li><label for="form-marca">Marca:</label> <input type="text" name="marca" id="form-marca"></li>
+        <li><label for="form-modelo">Modelo:</label> <input type="text" name="modelo" id="form-modelo"></li>
+        <li><label for="form-precio">Precio:</label> <input type="text" name="precio" id="form-precio"></li>
+        <li><label for="form-detalles">Detalles</label><br><textarea name="detalles" rows="4" cols="60" id="form-detalles" placeholder="No más de 300 caracteres de longitud"></textarea></li>
+        <li><label for="form-unidades">Unidades:</label> <input type="text" name="unidades" id="form-unidades"></li>
+    </ul>
+    <p>
+        <input type="submit" value="Enviar">
+        <input type="reset">
+    </p>
+</form>
+
+<script>
+    document.getElementById("formularioProducto").addEventListener("submit", function(event) {
+        let valid = true;
+
+        // Nombre: requerido y <= 100 caracteres
+        let nombre = document.getElementById("form-nombre").value.trim();
+        if (nombre.length === 0 || nombre.length > 100) {
+            alert("El nombre es requerido y debe tener 100 caracteres o menos.");
+            valid = false;
+        }
+
+        // Marca: requerida
+        let marca = document.getElementById("form-marca").value.trim();
+        if (marca.length === 0) {
+            alert("Debe seleccionar una marca.");
+            valid = false;
+        }
+
+        // Modelo: requerido, alfanumérico, <= 25 caracteres
+        let modelo = document.getElementById("form-modelo").value.trim();
+        if (modelo.length === 0 || modelo.length > 25 || !/^[A-Za-z0-9]+$/.test(modelo)) {
+            alert("El modelo es requerido, debe ser alfanumérico y tener 25 caracteres o menos.");
+            valid = false;
+        }
+
+        // Precio: requerido y mayor a 99.99
+        let precio = parseFloat(document.getElementById("form-precio").value);
+        if (isNaN(precio) || precio <= 99.99) {
+            alert("El precio es requerido y debe ser mayor a 99.99.");
+            valid = false;
+        }
+
+        // Detalles: opcional, máximo 250 caracteres
+        let detalles = document.getElementById("form-detalles").value.trim();
+        if (detalles.length > 250) {
+            alert("Los detalles deben tener 250 caracteres o menos.");
+            valid = false;
+        }
+
+        // Unidades: requeridas, número mayor o igual a 0
+        let unidades = parseInt(document.getElementById("form-unidades").value);
+        if (isNaN(unidades) || unidades < 0) {
+            alert("Las unidades son requeridas y deben ser 0 o más.");
+            valid = false;
+        }
+
+        // Imagen: si está vacía, asignar una por defecto
+        let imagenInput = document.getElementById("form-imagen");
+        if (imagenInput && imagenInput.value.trim() === "") {
+            imagenInput.value = "img/default_image.png";
+        }
+
+        if (!valid) {
+            event.preventDefault(); // Evitar envío si hay errores
+        }
+    });
+</script>
+
+</body>
+</html>
