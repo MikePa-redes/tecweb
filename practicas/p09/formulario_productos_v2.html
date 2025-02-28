@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <title>Editar Producto</title>
+    <style>
+        ol, ul {
+            list-style-type: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Editar Producto</h1>
+    
+    <form id="formularioProducto" action="editar_producto.php" method="post">
+        <h2>Información del producto</h2>
+        <input type="hidden" name="id" id="form-id">  
+
+        <ul>
+            <li><label for="form-nombre">Nombre:</label> <input type="text" name="nombre" id="form-nombre"></li>
+            <li><label for="form-marca">Marca:</label> <input type="text" name="marca" id="form-marca"></li>
+            <li><label for="form-modelo">Modelo:</label> <input type="text" name="modelo" id="form-modelo"></li>
+            <li><label for="form-precio">Precio:</label> <input type="text" name="precio" id="form-precio"></li>
+            <li><label for="form-detalles">Detalles</label><br>
+                <textarea name="detalles" rows="4" cols="60" id="form-detalles"></textarea>
+            </li>
+            <li><label for="form-unidades">Unidades:</label> <input type="text" name="unidades" id="form-unidades"></li>
+            <li><label for="form-imagen">Imagen URL:</label> <input type="text" name="imagen" id="form-imagen"></li>
+        </ul>
+
+        <p>
+            <input type="submit" value="Guardar Cambios">
+            <input type="reset" value="Restablecer">
+        </p>
+    </form>
+
+    <script>
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.has(param) ? decodeURIComponent(urlParams.get(param).replace(/\+/g, ' ')) : "";
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById("form-id").value = getQueryParam("id");
+            document.getElementById("form-nombre").value = getQueryParam("nombre");
+            document.getElementById("form-marca").value = getQueryParam("marca");
+            document.getElementById("form-modelo").value = getQueryParam("modelo");
+            document.getElementById("form-precio").value = getQueryParam("precio");
+            document.getElementById("form-detalles").value = getQueryParam("detalles");
+            document.getElementById("form-unidades").value = getQueryParam("unidades");
+            document.getElementById("form-imagen").value = getQueryParam("imagen");
+        });
+    </script>
+</body>
+</html>
