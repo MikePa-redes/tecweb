@@ -165,3 +165,47 @@ function buscarProducto(e) {
 
     client.send("search=" + encodeURIComponent(searchTerm));
 }
+
+
+// Función para agregar producto al servidor
+function agregarProducto(event) {
+  event.preventDefault();  // Evitar el envío del formulario
+
+  // Obtener el nombre y la descripción en formato JSON
+  const nombre = document.getElementById("name").value.trim();
+  const descripcion = document.getElementById("description").value.trim();
+
+  if (nombre === "" || descripcion === "") {
+    alert("Por favor, complete todos los campos.");
+    return;
+  }
+
+  // Convertir la descripción (JSON) a objeto
+  let producto;
+  try {
+    producto = JSON.parse(descripcion);
+  } catch (e) {
+    alert("La descripción debe ser un JSON válido.");
+    return;
+  }
+
+  // Agregar el nombre al producto
+  producto.nombre = nombre;
+
+  // Enviar los datos al servidor para insertarlos en la base de datos
+  fetch('./backend/create.php', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(producto)
+  })
+  .then(response => response.text())  // Obtener la respuesta como texto
+  .then(text => {
+    window.alert(text);  // Mostrar el mensaje de éxito/error recibido del servidor
+  })
+  .catch(error => {
+    console.error("Error en la solicitud:", error);
+    window.alert("Hubo un error al agregar el producto.");
+  });
+}
