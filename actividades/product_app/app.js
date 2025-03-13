@@ -164,16 +164,33 @@ $(document).ready(function(){
     
     
 
-        $(document).on('click', '.product-delete', (e) => {
-            if(confirm('¿Realmente deseas eliminar el producto?')) {
-                const element = $(this)[0].activeElement.parentElement.parentElement;
-                const id = $(element).attr('productId');
-                $.post('./backend/product-delete.php', {id}, (response) => {
-                    $('#product-result').hide();
-                    listarProductos();
-                });
+    $(document).on('click', '.product-delete', function(e) {
+        e.preventDefault();
+    
+        if (confirm('¿Realmente deseas eliminar el producto?')) {
+            const element = $(this).closest('tr'); // Encuentra la fila del producto
+            const id = element.attr('productId'); // Obtiene el ID del atributo productId
+    
+            console.log("ID del producto a eliminar:", id); // Para depuración
+    
+            $.post('./backend/product-delete.php', { id }, function(response) {
+                let result = JSON.parse(response);
+                console.log("Respuesta del servidor:", result);
+    
+                if (result.status === 'success') {
+                    alert('Producto eliminado correctamente');
+                    element.remove(); // Elimina la fila de la tabla
+                } else {
+                    alert('Error al eliminar el producto');
+                }
+            })
+            .fail(function() {
+                alert('Error de conexión con el servidor.');
+            });
         }
     });
+    
+    
 
     $(document).on('click', 'tr[productid]', function(e) {
         e.preventDefault();
