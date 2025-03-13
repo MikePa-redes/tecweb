@@ -151,6 +151,9 @@ $(document).ready(function(){
             $('#product-result').show();
             // SE INSERTA LA PLANTILLA PARA LA BARRA DE ESTADO
             $('#container').html(template_bar);
+
+            $('button.btn-primary').text("Agregar Producto");
+
             // SE LISTAN TODOS LOS PRODUCTOS
             listarProductos();
             // SE REGRESA LA BANDERA DE EDICIÓN A false
