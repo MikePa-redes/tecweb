@@ -30,33 +30,40 @@
           <div class="card">
             <div class="card-body">
               <!-- FORMULARIO PARA AGREGAR PRODUCTO -->
-              <form id="product-form">
-                <div class="form-group">
-                    <input class="form-control" type="text" id="nombre" name="nombre" placeholder="Nombre de producto">
-                </div>
-                <div class="form-group">
-                    <input class="form-control" type="number" id="precio" name="precio" placeholder="Precio">
-                </div>
-                <div class="form-group">
-                    <input class="form-control" type="number" id="unidades" name="unidades" placeholder="Unidades">
-                </div>
-                <div class="form-group">
-                    <input class="form-control" type="text" id="modelo" name="modelo" placeholder="Modelo">
-                </div>
-                <div class="form-group">
-                    <input class="form-control" type="text" id="marca" name="marca" placeholder="Marca">
-                </div>
-                <div class="form-group">
-                    <textarea class="form-control" id="detalles" name="detalles" placeholder="Detalles"></textarea>
-                </div>
-                <div class="form-group">
-                    <input class="form-control" type="file" id="imagen" name="imagen">
-                </div>
-                <button class="btn btn-primary btn-block text-center" type="submit">Agregar Producto</button>
-            </form>
-            </div>
-          </div>
-        </div>
+<form id="product-form">
+  <!-- FORMULARIO PARA AGREGAR PRODUCTO -->
+<form id="product-form">
+  <div class="form-group">
+      <input type="hidden" id="productId" name="productId"> <!-- Campo oculto para almacenar el ID del producto -->
+  </div>
+  <div class="form-group">
+      <input class="form-control" type="text" id="nombre" name="nombre" placeholder="Nombre de producto">
+  </div>
+  <div class="form-group">
+      <input class="form-control" type="number" id="precio" name="precio" placeholder="Precio">
+  </div>
+  <div class="form-group">
+      <input class="form-control" type="number" id="unidades" name="unidades" placeholder="Unidades">
+  </div>
+  <div class="form-group">
+      <input class="form-control" type="text" id="modelo" name="modelo" placeholder="Modelo">
+  </div>
+  <div class="form-group">
+      <input class="form-control" type="text" id="marca" name="marca" placeholder="Marca">
+  </div>
+  <div class="form-group">
+      <textarea class="form-control" id="detalles" name="detalles" placeholder="Detalles"></textarea>
+  </div>
+  <div class="form-group">
+      <input class="form-control" type="file" id="imagen" name="imagen">
+  </div>
+  <button class="btn btn-primary btn-block text-center" type="submit">Agregar Producto</button>
+</form>
+</div>
+</div>
+</div>
+
+
 
         <!-- TABLA  -->
         <div class="col-md-7">
